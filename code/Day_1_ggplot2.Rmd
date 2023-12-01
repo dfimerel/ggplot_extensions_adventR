@@ -1,0 +1,73 @@
+---
+title: "Day 1 ggplot2"
+output: html_notebook
+---
+
+# Basic plot examples using ggplot2
+
+## Overview
+
+The ggplot2 package provides a simple way to create attractive plots, to visualize and explore data. Here we will plot a scatter plot, a barplot and a boxplot. For the full documentation visit: <https://ggplot2.tidyverse.org/>
+
+## Code
+
+```{r}
+# Load the package "ggplot2"
+library(ggplot2)
+
+# Create some sample data
+set.seed(123)
+scatter_data <- data.frame(x = rnorm(50),
+                           y = rnorm(50))
+
+bar_data <- data.frame(category = c("Category A", "Category B", "Category C", "Category D"),
+                       value = c(25, 40, 15, 30))
+
+boxplot_data <- data.frame(group = rep(c("Group 1", "Group 2", "Group 3"), each = 50),
+                           value = rnorm(150))
+
+# Plot scatter plot
+ggplot(scatter_data, aes(x = x, y = y)) +
+  geom_point() +
+  labs(title = "Scatter Plot",
+       x = "X-axis Label",
+       y = "Y-axis Label")+
+       theme_minimal()
+
+# Plot barplot
+ggplot(bar_data, aes(x = category, y = value, fill = category)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Barplot",
+       x = "Categories",
+       y = "Values")+
+       theme_minimal()
+
+# Plot boxplot
+ggplot(boxplot_data, aes(x = group, y = value, fill = group)) +
+  geom_boxplot() +
+  labs(title = "Boxplot",
+       x = "Groups",
+       y = "Values")+
+       theme_minimal()
+
+```
+
+## The festive version of the scatter plot is here
+
+```{r}
+# Load the package "ggimage"
+library(ggimage)
+
+# Define your image directory
+img = "christmas_tree_powerpoint.png"
+
+# Plot christmas scatter plot
+ggplot(scatter_data, aes(x = x, y = y)) +
+  geom_image(aes(image = img), size = 0.08) +
+  labs(title = "Christmas Tree Scatter Plot",
+       x = "X-axis Label",
+       y = "Y-axis Label")+
+       theme_minimal()
+
+
+```

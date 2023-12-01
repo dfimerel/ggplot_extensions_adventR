@@ -1,0 +1,100 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Creating publication ready plots
+
+## Overview
+The ggpubr package provides some easy-to-use functions for creating and customizing ggplot2-based publication ready plots. 
+For the full documentation visit: https://rpkgs.datanovia.com/ggpubr/
+
+## Code
+```{r}
+# Load the package "ggpubr"
+library(ggpubr)
+
+# Create some sample data
+# Christmas tree names
+tree_names <- c("Fir","Spruce","Pine","Cedar","Cypress","Redwood","Hemlock","Juniper","Maple","Oak","Birch","Cherry","Palm","Sycamore","Willow","Magnolia","Aspen","Poplar","Chestnut","Pecan")
+
+# Christmas tree sizes in feet
+tree_sizes <- c(6, 7, 5, 8, 6.5, 9, 7.5, 5.5, 8.5, 6.8, 7.2, 5.7, 4.5, 6.2, 8.3, 5.8, 7.8, 6.3, 7.1, 8.8)
+
+# Christmas tree prices in dollars
+tree_prices <- c(40, 60, 30, 80, 45, 120, 90, 55, 100, 70, 75, 50, 35, 65, 110, 40, 95, 60, 85, 130)
+
+# Creating groups based on price
+tree_groups <- ifelse(tree_prices <= 70, "Affordable", "Luxury")
+
+# Creating a data frame
+christmas_trees <- data.frame(Tree_Name = tree_names, 
+                              Tree_Size_Feet = tree_sizes,
+                              Tree_Price_Dollars = tree_prices, 
+                              Tree_Group = tree_groups)
+
+
+# Plot a scatter plot with regression line
+ggscatter(christmas_trees, 
+          x = "Tree_Size_Feet",
+          y = "Tree_Price_Dollars", 
+          color = "Tree_Group",  
+          add = "reg.line", 
+          conf.int = TRUE,
+          cor.coef = TRUE,  
+          cor.method = "pearson",  
+          xlab = "Tree size (feet)", 
+          ylab = "Tree price (dollars)", 
+          main = "Scatter Plot with Regression Line")
+
+
+# Plot a boxplot with jitter points
+ggboxplot(christmas_trees, 
+          x = "Tree_Group",
+          y = "Tree_Size_Feet",
+          xlab = "Tree_Group",
+          ylab = "Tree size (feet)",
+          main = "Box Plot with Jitter Points",
+          color = "Tree_Group",
+          add = "jitter")
+
+
+# Plot a dotchart
+ggdotchart(christmas_trees, 
+           x = "Tree_Name", 
+           y = "Tree_Price_Dollars",
+           ylab = "Tree price (dollars)",
+           color = "Tree_Group",                                
+           palette = c("#00AFBB", "#FC4E07"), 
+           sorting = "ascending",                        
+           add = "segments",   
+           main = "Dotchart",
+           ggtheme = theme_pubr())
+
+```
+
+## The festive version of the scatter plot is here
+
+```{r}
+# Load the package "ggimage"
+library(ggimage)
+
+# Define your image directory
+img = "christmas_tree_powerpoint.png"
+
+# Plot christmas scatter plot
+ggscatter(christmas_trees, 
+          x = "Tree_Size_Feet",
+          y = "Tree_Price_Dollars", 
+          color = "Tree_Group",  
+          add = "reg.line", 
+          conf.int = TRUE,
+          cor.coef = TRUE,  
+          cor.method = "pearson",  
+          xlab = "Tree size (feet)", 
+          ylab = "Tree price (dollars)", 
+          main = "Scatter Plot with Regression Line")+
+  geom_image(aes(image = img), size = 0.08)
+
+```
+

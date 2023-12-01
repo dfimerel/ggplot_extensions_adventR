@@ -1,0 +1,79 @@
+---
+title: "Day 5 ggtext"
+output: html_notebook
+---
+
+# Text rendering support for ggplot2
+
+## Overview
+The ggtext package provides simple Markdown and HTML rendering for ggplot2.
+For the full documentation visit: https://wilkelab.org/ggtext/
+
+
+## Code
+```{r}
+
+# Load libraries
+library(ggplot2)
+library(ggtext)
+
+# Create some sample data
+# Christmas tree names
+tree_names <- c("Fir","Spruce","Pine","Cedar","Cypress","Redwood","Hemlock","Juniper","Maple","Oak","Birch","Cherry","Palm","Sycamore","Willow","Magnolia","Aspen","Poplar","Chestnut","Pecan")
+
+# Christmas tree sizes in feet
+tree_sizes <- c(6, 7, 5, 8, 6.5, 9, 7.5, 5.5, 8.5, 6.8, 7.2, 5.7, 4.5, 6.2, 8.3, 5.8, 7.8, 6.3, 7.1, 8.8)
+
+# Christmas tree prices in dollars
+tree_prices <- c(40, 60, 30, 80, 45, 120, 90, 55, 100, 70, 75, 50, 35, 65, 110, 40, 95, 60, 85, 130)
+
+# Creating groups based on price
+tree_groups <- ifelse(tree_prices <= 70, "Affordable", "Luxury")
+
+# Creating a data frame
+christmas_trees <- data.frame(Tree_Name = tree_names, 
+                              Tree_Size_Feet = tree_sizes,
+                              Tree_Price_Dollars = tree_prices, 
+                              Tree_Group = tree_groups)
+
+# Create a ggplot with formatted text using ggtext
+ggplot(christmas_trees,aes(x=Tree_Size_Feet, y=Tree_Price_Dollars, color = Tree_Group)) +
+  geom_point(size = 2) +
+  scale_color_manual(values = c(Affordable = "#0072B2", Luxury = "#D55E00"),guide = "none") +
+  labs(x = "Tree size (feet)",
+       y = "Tree price (dollars)",
+       title = "Tree size affects price <br>
+<span style = 'font-size:10pt;'>The price of a tree is higher for <span style = 'color:#D55E00;'>larger</span> trees than for<span style = 'color:#0072B2;'> smaller </span>trees."
+  ) +
+  theme_bw() + theme(plot.title.position = "plot")+
+  theme(plot.title = element_textbox_simple(size = 14, lineheight = 1, padding = margin(0, 0, 5, 0)))
+
+```
+
+
+## The festive version of the scatter plot is here
+
+```{r}
+# Load the package "ggimage"
+library(ggimage)
+
+# Define your image directory
+img = "christmas_tree_powerpoint.png"
+
+# Plot christmas scatter plot
+ggplot(christmas_trees,aes(x=Tree_Size_Feet, y=Tree_Price_Dollars, color = Tree_Group)) +
+  geom_point(size = 2) +
+  scale_color_manual(values = c(Affordable = "#0072B2", Luxury = "#D55E00"),guide = "none") +
+  labs(x = "Tree size (feet)",
+       y = "Tree price (dollars)",
+       title = "Tree size affects price <br>
+<span style = 'font-size:10pt;'>The price of a tree is higher for <span style = 'color:#D55E00;'>larger</span> trees than for<span style = 'color:#0072B2;'> smaller </span>trees."
+  ) +
+  theme_bw() + theme(plot.title.position = "plot")+
+  theme(plot.title = element_textbox_simple(size = 14, lineheight = 1, padding = margin(0, 0, 5, 0)))+
+  geom_image(aes(image = img), size = 0.08)
+
+```
+
+
+

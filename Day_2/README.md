@@ -1,4 +1,4 @@
-# Day 1 
+# Day 2  
 
 ### A scatterplot with Christmas trees
  ---

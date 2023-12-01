@@ -6,4 +6,4 @@ This repo is dedicated to sharing 24 ggplot2 data visualization extensions, one 
 ## Gallery
 
 ### **[Day 1 ggplot2]**
-![Screenshot](code/Day1_scatterplot_Christmas.png)
+![Screenshot](code/Day_1/Day1_scatterplot_Christmas.png)

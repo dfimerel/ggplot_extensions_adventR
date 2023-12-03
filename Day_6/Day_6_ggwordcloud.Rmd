@@ -1,0 +1,35 @@
+---
+title: "Day 6 wordcloud"
+output: html_notebook
+---
+
+# A word cloud geom for ggplot2
+
+## Overview
+
+The ggwordcloud package provides a way to create word cloud with ggplot2. For the full documentation visit: <https://cran.r-project.org/web/packages/ggwordcloud/vignettes/ggwordcloud.html>
+
+## Code
+
+```{r}
+# Load libraries
+library(ggwordcloud)
+
+# Load some data
+data("love_words_small")
+
+# Plot a word cloud
+set.seed(123)
+ggplot(love_words_small, aes(label = name,size = speakers)) +
+  geom_text_wordcloud() +
+  theme_minimal()
+
+# Plot a word cloud with colours
+set.seed(123)
+ggplot(love_words_small,aes(label = name, size = speakers,
+    color = factor(sample.int(10, nrow(love_words_small), replace = TRUE)))) +
+  geom_text_wordcloud_area() +
+  scale_size_area(max_size = 40) +
+  theme_minimal()
+
+```

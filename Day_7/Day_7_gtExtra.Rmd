@@ -1,0 +1,48 @@
+---
+title: "Day 7 gtExtras"
+output: html_notebook
+---
+
+# Create beautiful tables in R
+
+## Overview
+The gtExtras package provides additional helper functions to assist in creating beautiful tables with gt.
+For the full documentation visit: https://jthomasmock.github.io/gtExtras/index.html
+
+## Code
+```{r}
+# Load library
+library(gt)
+library(gtExtras)
+library(dplyr, warn.conflicts =  FALSE)
+library(ggplot2)
+
+# Create a dataset
+car_summary <- mtcars %>%
+  dplyr::group_by(cyl) %>%
+  
+  dplyr::summarize(mean = mean(mpg),
+                   sd = sd(mpg),
+                   mpg_data = list(mpg), # must end up with list of data for each row in the input dataframe
+                   .groups = "drop")
+
+# Make a table with density plot
+car_summary %>%
+  arrange(desc(cyl)) %>% 
+  gt() %>%
+  gtExtras::gt_plt_dist(mpg_data, type = "density", line_color = "blue", fill_color = "red") %>%
+  fmt_number(columns = mean:sd, decimals = 1) %>%
+  gtsave("gtExtras_table1.html") # for visualization purposes
+
+# Make a table with histogram plot
+car_summary %>%
+  arrange(desc(cyl)) %>% 
+  gt() %>%
+  gtExtras::gt_plt_dist(mpg_data, type = "histogram", line_color = "purple", 
+                         fill_color = "green", bw = 4) %>%
+  fmt_number(columns = mean:sd, decimals = 1) %>%
+  gtsave("gtExtras_table2.html") # for visualization purposes
+
+
+```
+

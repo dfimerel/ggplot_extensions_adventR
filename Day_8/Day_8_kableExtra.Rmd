@@ -1,0 +1,55 @@
+---
+title: "Day 8 kableExtra"
+output: html_notebook
+---
+
+# Create HTML tables in R
+
+## Overview
+The kableExtra package help you build common complex tables and manipulate table styles. 
+For the full documentation visit: https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html#Overview
+
+## Code
+```{r}
+# Load library
+library(kableExtra)
+
+# Create some sample data
+# Christmas tree names
+tree_names <- c("Fir","Spruce","Pine","Cedar","Cypress","Redwood","Hemlock","Juniper","Maple","Oak","Birch","Cherry","Palm","Sycamore","Willow","Magnolia","Aspen","Poplar","Chestnut","Pecan")
+
+# Christmas tree sizes in feet
+tree_sizes <- c(6, 7, 5, 8, 6.5, 9, 7.5, 5.5, 8.5, 6.8, 7.2, 5.7, 4.5, 6.2, 8.3, 5.8, 7.8, 6.3, 7.1, 8.8)
+
+# Christmas tree prices in dollars
+tree_prices <- c(40, 60, 30, 80, 45, 120, 90, 55, 100, 70, 75, 50, 35, 65, 110, 40, 95, 60, 85, 130)
+
+# Creating groups based on price
+tree_groups <- ifelse(tree_prices <= 70, "Affordable", "Luxury")
+
+# Creating a data frame
+christmas_trees <- data.frame(Tree_Name = tree_names, 
+                              Tree_Size_Feet = tree_sizes,
+                              Tree_Price_Dollars = tree_prices, 
+                              Tree_Group = tree_groups)
+
+# make it shorter for illustration purposes
+christmas_trees_short = head(christmas_trees,5)
+
+# Create a classic table and define the text fonts
+christmas_trees_short %>%
+  kbl(caption = "Christmas trees classic table") %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+
+# Create the table where you can hover over the values
+christmas_trees_short %>%
+  kbl(caption = "Christmas trees table with hover") %>%
+  kable_paper("hover", full_width = F)
+
+# Create the dark themed table
+christmas_trees_short %>%
+  kbl() %>%
+  kable_material_dark()
+
+  
+```

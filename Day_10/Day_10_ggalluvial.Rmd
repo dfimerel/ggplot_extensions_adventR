@@ -1,0 +1,34 @@
+---
+title: "Day 10 ggalluvial"
+output: html_notebook
+---
+
+# Creating alluvial plots
+
+## Overview
+The ggalluvial package provides a way to create alluvial plots.
+For the full documentation visit: https://cran.r-project.org/web/packages/ggalluvial/vignettes/ggalluvial.html
+
+## Code
+```{r}
+# Load library
+library(ggalluvial)
+
+# Load a dataset
+titanic_wide <- data.frame(Titanic)
+
+# Create the alluvial plot
+ggplot(data = titanic_wide,
+       aes(axis1 = Class, axis2 = Sex, axis3 = Age,
+           y = Freq)) +
+  scale_x_discrete(limits = c("Class", "Sex", "Age"), expand = c(.2, .05)) +
+  xlab("Demographic") +
+  geom_alluvium(aes(fill = Survived)) +
+  geom_stratum() +
+  geom_text(stat = "stratum", aes(label = after_stat(stratum))) +
+  theme_minimal() +
+  ggtitle("passengers on the maiden voyage of the Titanic")
+
+
+```
+

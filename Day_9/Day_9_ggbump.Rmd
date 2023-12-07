@@ -1,0 +1,34 @@
+---
+title: "Day 9 ggbump"
+output: html_notebook
+---
+
+# Create bump charts
+
+## Overview
+
+The ggbump package creates elegant bump charts in ggplot. For the full documentation visit: <https://github.com/davidsjoberg/ggbump>
+
+## Code
+
+```{r}
+# Load library
+library(ggbump)
+library(ggplot2)
+library(dplyr)
+
+# Create a dataset
+christmas_trees_ranks <- data.frame(tree = c(rep("Fir",3),rep("Spruce",3),rep("Pine",3),rep("Cedar",3)),
+                                    year = rep(c(2021,2022,2023),4),
+                                    rank = c(4, 2, 2, 3, 1, 4, 2, 3, 1, 1, 4, 3))
+
+# Make a plot
+ggplot(christmas_trees_ranks, aes(year, rank, color = tree)) +
+  geom_point(size = 6) +
+  geom_bump(size = 1.5)+
+  scale_color_brewer(palette = "RdBu") +
+  theme(legend.position = "right")+
+  theme_classic()+
+  scale_x_continuous(breaks = c(2021, 2022,2023))
+
+```

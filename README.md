@@ -14,3 +14,19 @@ This repo is dedicated to sharing 24 ggplot data visualization extensions, one f
 ### Day 3
 ![Screenshot](Day_3/Day3_three_plots.png)
 
+### Day 4
+![Screenshot](Day_4/Day4_scatterplot.png)
+
+### Day 5
+![Screenshot](Day_5/Day5_scatterplot_Christmas.png)
+
+### Day 6
+![Screenshot](Day_6/Day_6_color_wordcloud.png)
+
+### Day 7
+![Screenshot](Day_7/Day_7_table_and_density.png)
+
+
+
+
+

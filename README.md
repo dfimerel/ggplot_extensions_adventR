@@ -26,7 +26,11 @@ This repo is dedicated to sharing 24 ggplot data visualization extensions, one f
 ### Day 7
 ![Screenshot](Day_7/Day_7_table_and_density.png)
 
+### Day 8
+![Screenshot](Day_8/Day_8_classic_table.png)
 
+### Day 9
+![Screenshot](Day_9/Day_9_bump_chart.png)
 
 
 

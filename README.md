@@ -32,5 +32,9 @@ This repo is dedicated to sharing 24 ggplot data visualization extensions, one f
 ### Day 9
 ![Screenshot](Day_9/Day_9_bump_chart.png)
 
+### Day 10
+![Screenshot](Day_10/Day_10_ggalluvial.png)
+
+
 
 

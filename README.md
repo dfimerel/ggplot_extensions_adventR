@@ -35,6 +35,16 @@ This repo is dedicated to sharing 24 ggplot data visualization extensions, one f
 ### Day 10
 ![Screenshot](Day_10/Day_10_ggalluvial.png)
 
+### Day 11
+![Screenshot](Day_11/Day_11_upset_plot.png)
+
+### Day 12
+![Screenshot](Day_12/Day_12_ridge_plot.png)
+
+### Day 13
+![Screenshot](Day_13/Day_13_horizon_plot.png)
+
+
 
 
 

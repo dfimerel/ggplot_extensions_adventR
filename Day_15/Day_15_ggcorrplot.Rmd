@@ -1,0 +1,27 @@
+---
+title: "Day 15 ggcorrplot"
+output: html_notebook
+---
+
+# Creating correlation plots
+
+## Overview
+The ggcorrplot package allows an easy way to visualize correlation matrices.
+For the full documentation visit: https://cran.r-project.org/web/packages/ggcorrplot/readme/README.html
+
+## Code
+```{r}
+# Load library
+library(ggcorrplot)
+
+# Load a dataset
+data(mtcars)
+
+# Calculate the correlation and p-values
+corr <- round(cor(mtcars), 1)
+p.mat <- cor_pmat(mtcars)
+
+# Make a correlation plot plot 
+ggcorrplot(corr, method = "circle")
+
+```

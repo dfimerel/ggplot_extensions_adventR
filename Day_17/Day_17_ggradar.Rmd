@@ -1,0 +1,31 @@
+---
+title: "Day 17 ggradar"
+output: html_notebook
+---
+
+# Creating radar plots
+
+## Overview
+The ggradar package allows to create radar (spider) plots.
+For the full documentation visit: https://github.com/ricardo-bion/ggradar
+
+## Code
+```{r}
+# Load library
+library(ggradar)
+library(dplyr)
+library(scales)
+library(tibble)
+
+# Create a dataset
+mtcars_radar <- mtcars %>% 
+  as_tibble(rownames = "group") %>% 
+  mutate_at(vars(-group), rescale) %>% 
+  tail(4) %>% 
+  select(1:10)
+
+# Make a beeswarm plot using ggbeeswarm
+ggradar(mtcars_radar)
+
+```
+

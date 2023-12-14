@@ -44,6 +44,12 @@ This repo is dedicated to sharing 24 ggplot data visualization extensions, one f
 ### Day 13
 ![Screenshot](Day_13/Day_13_horizon_plot.png)
 
+### Day 14
+![Screenshot](Day_14/Day_14_beeswarm_plot.png)
+
+### Day 15
+![Screenshot](Day_15/Day_15_correlation_plot.png)
+
 
 
 

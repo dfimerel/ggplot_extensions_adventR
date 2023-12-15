@@ -1,0 +1,48 @@
+---
+title: "Day 19 ggpatern"
+output: html_notebook
+---
+
+# Create areas in plots filled with patterns
+
+## Overview
+The ggpattern package provides custom ggplot2 geoms which support filled areas with geometric and image-based patterns.
+For the full documentation visit: https://coolbutuseless.github.io/package/ggpattern/
+
+## Code
+```{r}
+# Load library
+library(ggpattern)
+library(ggplot2)
+
+# Create some sample data
+# Christmas tree names
+tree_names <- c("Fir","Spruce","Pine","Cedar","Cypress","Redwood","Hemlock","Juniper","Maple","Oak","Birch","Cherry","Palm","Sycamore","Willow","Magnolia","Aspen","Poplar","Chestnut","Pecan")
+
+# Christmas tree sizes in feet
+tree_sizes <- c(6, 7, 5, 8, 6.5, 9, 7.5, 5.5, 8.5, 6.8, 7.2, 5.7, 4.5, 6.2, 8.3, 5.8, 7.8, 6.3, 7.1, 8.8)
+
+# Christmas tree prices in dollars
+tree_prices <- c(40, 60, 30, 60, 45, 120, 100, 55, 100, 70, 75, 50, 35, 65, 100, 40, 95, 60, 95, 100)
+
+# Creating groups based on price
+tree_groups <- ifelse(tree_prices <= 70, "Affordable", "Luxury")
+
+# Creating a data frame
+christmas_trees <- data.frame(Tree_Name = tree_names, 
+                              Tree_Size_Feet = tree_sizes,
+                              Tree_Price_Dollars = tree_prices, 
+                              Tree_Group = tree_groups)
+
+# Create the plot
+ggplot(christmas_trees) +
+  geom_col_pattern(
+    aes(Tree_Group, Tree_Price_Dollars, pattern_fill = Tree_Group), 
+    pattern = 'stripe',
+    fill    = 'white',
+    colour  = 'black') +
+  theme_bw(18) +
+  theme(legend.position = 'none') + 
+  labs(x="Tree Group",y="Tree Price (Dollars)")
+
+```

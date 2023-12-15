@@ -1,0 +1,45 @@
+---
+title: "Day 18 ggdendro"
+output: html_notebook
+---
+
+# Extracting dendograms and tree diagrams and plotting them
+
+## Overview
+The ggdendro package provides an easy way to extract dendrogram and tree diagrams into a list of data frames. You can then use this list to recreate these types of plots using the ggplot2 package.
+For the full documentation visit: https://cran.r-project.org/web/packages/ggdendro/vignettes/ggdendro.html
+
+## Code
+```{r}
+# Load library
+library(ggplot2)
+library(ggdendro)
+
+# Create some sample data
+# Christmas tree names
+tree_names <- c("Fir","Spruce","Pine","Cedar","Cypress","Redwood","Hemlock","Juniper","Maple","Oak","Birch","Cherry","Palm","Sycamore","Willow","Magnolia","Aspen","Poplar","Chestnut","Pecan")
+
+# Christmas tree sizes in feet
+tree_sizes <- c(6, 7, 5, 8, 6.5, 9, 7.5, 5.5, 8.5, 6.8, 7.2, 5.7, 4.5, 6.2, 8.3, 5.8, 7.8, 6.3, 7.1, 8.8)
+
+# Christmas tree prices in dollars
+tree_prices <- c(40, 60, 30, 60, 45, 120, 100, 55, 100, 70, 75, 50, 35, 65, 100, 40, 95, 60, 95, 100)
+
+# Creating a data frame
+christmas_trees <- data.frame(Tree_Name = tree_names, 
+                              Tree_Size_Feet = tree_sizes,
+                              Tree_Price_Dollars = tree_prices)
+rownames(christmas_trees)=christmas_trees$Tree_Name
+
+
+# Create a dummy clustering
+hc <- hclust(dist(christmas_trees_toKeep), "ave")
+
+# Plot a dendogram
+ggdendrogram(hc, rotate = FALSE, size = 2)
+
+```
+
+
+
+

@@ -50,7 +50,17 @@ This repo is dedicated to sharing 24 ggplot data visualization extensions, one f
 ### Day 15
 ![Screenshot](Day_15/Day_15_correlation_plot.png)
 
+### Day 16
+![Screenshot](Day_16/Day_16_treemap.png)
 
+### Day 17
+![Screenshot](Day_17/Day_17_radar_plot.png)
+
+### Day 18
+![Screenshot](Day_18/Day_18_dendrogram.png)
+
+### Day 19
+![Screenshot](Day_19/Day_19_plot_with_patterns.png)
 
 
 

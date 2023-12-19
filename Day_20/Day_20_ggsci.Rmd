@@ -1,0 +1,37 @@
+---
+title: "Day 20 ggsci"
+output: html_notebook
+---
+
+# Color palettes for ggplot2
+
+## Overview
+The ggsci package offers a collection of high-quality color palettes inspired by colors used in scientific journals, data visualization libraries, science fiction movies, and TV shows.
+For the full documentation visit: https://cran.r-project.org/web/packages/ggsci/vignettes/ggsci.html
+
+## Code
+```{r}
+# Load library
+library("ggsci")
+library("ggplot2")
+library("gridExtra")
+
+# Create a dataset
+data("diamonds")
+
+# Make a plot with colors inspired by the Simpsons
+p1 <- ggplot(subset(diamonds, carat >= 2.2),aes(x = table, y = price, colour = cut)) +
+  geom_point(alpha = 0.7) +
+  geom_smooth(method = "loess", alpha = 0.05, linewidth = 1, span = 1) +
+  theme_bw()
+
+p2 <- ggplot(subset(diamonds, carat > 2.2 & depth > 55 & depth < 70),aes(x = depth, fill = cut)) +
+  geom_histogram(colour = "black", binwidth = 1, position = "dodge") +
+  theme_bw()
+
+
+p1_simpsons <- p1 + scale_color_futurama()
+p2_simpsons <- p2 + scale_fill_futurama()
+grid.arrange(p1_simpsons, p2_simpsons, ncol = 2)
+
+```

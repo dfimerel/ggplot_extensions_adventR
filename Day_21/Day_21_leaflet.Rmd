@@ -1,0 +1,29 @@
+---
+title: "Day 21 leaflet"
+output: html_notebook
+---
+
+
+# Create maps in R
+
+## Overview
+The leaflet package one of the most popular open-source JavaScript libraries for interactive maps. 
+For the full documentation visit: https://rstudio.github.io/leaflet/.
+
+## Code
+```{r}
+# Load library
+library(leaflet)
+
+# Specify the longitute and latitude and plot the map
+leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng=174.768, lat=-36.852, popup="The birthplace of R")
+
+# As a second example, plot the position of the Acropolis of Athens in Greece
+leaflet() %>%
+  addTiles() %>%  
+  addMarkers(lng=23.7257, lat=37.9715, popup="Acropolis of Athens, Greece")
+
+
+```

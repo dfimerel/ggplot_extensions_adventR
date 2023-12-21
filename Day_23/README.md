@@ -4,5 +4,5 @@
 
 #### *Note that this is only an image. The plot is actually interactive
  ---
-![boxplot](Day_23_boxplot_plotly.png)
+![boxplot](Day_23_boxplot_plotly_screenshot.png)
 

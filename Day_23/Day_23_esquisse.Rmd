@@ -1,0 +1,19 @@
+---
+title: "Day 23 esquisse"
+output: html_notebook
+---
+
+# Explore your data interactively
+
+## Overview
+This addin allows you to interactively explore your data by visualizing it with the ggplot2 package.
+For the full documentation visit: https://github.com/dreamRs/esquisse
+
+## Code
+```{r}
+# All you need to do is install and launch the add in, no additional code
+
+esquisse::esquisser(palmerpenguins::penguins)
+
+```
+

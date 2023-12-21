@@ -1,0 +1,52 @@
+---
+title: "Day 23"
+output: html_notebook
+---
+
+# Make interactive graphs
+
+## Overview
+The ggpattern package provides custom ggplot2 geoms which support filled areas with geometric and image-based patterns.
+For the full documentation visit: https://coolbutuseless.github.io/package/ggpattern/
+
+## Code
+```{r}
+# Load library
+library(plotly)
+library(ggpubr)
+
+
+# Create some sample data
+# Christmas tree names
+tree_names <- c("Fir","Spruce","Pine","Cedar","Cypress","Redwood","Hemlock","Juniper","Maple","Oak","Birch","Cherry","Palm","Sycamore","Willow","Magnolia","Aspen","Poplar","Chestnut","Pecan")
+
+# Christmas tree sizes in feet
+tree_sizes <- c(6, 7, 5, 8, 6.5, 9, 7.5, 5.5, 8.5, 6.8, 7.2, 5.7, 4.5, 6.2, 8.3, 5.8, 7.8, 6.3, 7.1, 8.8)
+
+# Christmas tree prices in dollars
+tree_prices <- c(40, 60, 30, 80, 45, 120, 90, 55, 100, 70, 75, 50, 35, 65, 110, 40, 95, 60, 85, 130)
+
+# Creating groups based on price
+tree_groups <- ifelse(tree_prices <= 70, "Affordable", "Luxury")
+
+# Creating a data frame
+christmas_trees <- data.frame(Tree_Name = tree_names, 
+                              Tree_Size_Feet = tree_sizes,
+                              Tree_Price_Dollars = tree_prices, 
+                              Tree_Group = tree_groups)
+
+
+# Make a plot using plotly directly
+plot_ly(data = christmas_trees, x = ~Tree_Size_Feet, y = ~Tree_Price_Dollars) %>%
+        layout(title = 'Scatter Plot using Plotly')
+
+# Make a second plot using ggplot2 grammar and plotly after
+p <- ggplot(christmas_trees, aes(x=Tree_Group,y=Tree_Size_Feet,col=Tree_Group)) +
+  geom_boxplot()+
+  geom_jitter()+
+  labs(x="Tree Group",y="Tree size (feet)",title="Box Plot with Jitter Points using Plotly")+
+  theme_classic2()
+ggplotly(p)
+
+
+```

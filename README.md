@@ -62,5 +62,11 @@ This repo is dedicated to sharing 24 ggplot data visualization extensions, one f
 ### Day 19
 ![Screenshot](Day_19/Day_19_plot_with_patterns.png)
 
+### Day 20
+![Screenshot](Day_20/Day_20_futurama_color_plot.png)
+
+### Day 21
+![Screenshot](Day_21/Day_21_map_athens_greece.png)
+
 
 

@@ -68,5 +68,12 @@ This repo is dedicated to sharing 24 ggplot data visualization extensions, one f
 ### Day 21
 ![Screenshot](Day_21/Day_21_map_athens_greece.png)
 
+### Day 22
+![Screenshot](Day_22/Day_22_boxplot_plotly_screenshot.png)
 
+### Day 23
+![Screenshot](Day_23/Day_23_esquisse.png)
 
+### Day 24
+As a final day "gift" ,you can explore all of these extensions and many more at:
+https://exts.ggplot2.tidyverse.org/gallery/
